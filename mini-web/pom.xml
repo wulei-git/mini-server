@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!--
+        parent 标签：
+            1.创建一个parent项目，打包类型为pom，parent项目中不存放任何代码，只是管理多个项目之间公共的依赖。
+            2.便于控制依赖框架的版本
+    -->
+    <parent>
+        <groupId>com.init.mini</groupId>
+        <artifactId>mini-server</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
+    <!--
+        groupId标签：
+            1.公司或者组织的唯一标志
+            2.并且配置时生成的路径也是由此生成，
+            如com.companyname.project-group，maven会将该项目打成的jar
+            包放本地路径：/com/companyname/project-group
+     -->
+    <groupId>com.init.mini.web</groupId>
+    <!--
+        artifactId：
+            1.项目的唯一ID
+            2.一个groupId下面可能多个项目，就是靠artifactId来区分的
+    -->
+    <artifactId>mini-web</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>mini-web</name>
+    <description>Web project for Spring Boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <!--
+        maven构建生命周期：
+            1.验证 validate	验证项目	验证项目是否正确且所有必须信息是可用的
+            2.编译 compile	执行编译	源代码编译在此阶段完成
+            3.测试 Test	测试	使用适当的单元测试框架（例如JUnit）运行测试。
+            4.包装 package	打包	创建JAR/WAR包如在 pom.xml 中定义提及的包
+            5.检查 verify	检查	对集成测试的结果进行检查，以保证质量达标
+            6.安装 install	安装	安装打包的项目到本地仓库，以供其他项目使用
+            7.部署 deploy	部署	拷贝最终的工程包到远程仓库中，以共享给其他开发人员和工程
+    -->
+
+    <dependencies>
+        <dependency>
+            <groupId>com.init.mini.common</groupId>
+            <artifactId>mini-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!--
+            父 pom 使用
+            1.先在spring-boot-dependencies父 pom中查找是否存在需要的依赖
+            2.父 pom 是模板，需要在子pom中添加才能生效
+            3.父 pom 中的依赖默认为父依赖版本，无需写版本号，这也是 parent 标签的重大意义
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <!--
+                    exclusion：
+                        1.当计算传递依赖时，从依赖构件列表里，列出被排除的依赖构件集。
+                        2.即告诉maven你只依赖指定的项目，不依赖项目的依赖。
+                        3.此元素主要用于解决版本冲突问题
+                -->
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
+        <!--
+            注意：
+                1.httpClien与feign版本之间的适配
+                2.Dalston.SR5版本
+                    a.项目<artifactId>spring-cloud-starter-feign</artifactId>
+                    b.适配 HTTP 框架中间件 <groupId>com.netflix.feign</groupId>
+                      <artifactId>feign-httpclient</artifactId>
+                3.Greenwich.SR2版本
+                    a.项目<artifactId>spring-cloud-starter-openfeign</artifactId>
+                    b.适配 HTTP 框架中间件<groupId>io.github.openfeign</groupId>
+                        <artifactId>feign-httpclient</artifactId>
+        -->
+
+        <!-- Ribbon相关 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-ribbon</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <!--
+                    spring-boot-maven-plugin插件：
+                        1.当运行“mvn package”进行打包时，会打包成一个可以直接运行的 JAR 文件
+                        2.使用“java -jar”命令就可以直接运行。
+                        3.不推荐用war，因为springboot适合前后端分离，打成jar进行部署更合适。
+                -->
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+        <resources>
+            <!--此处的配置是识别到mapper.xml文件，也可以在application.properties中配置-->
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+</project>

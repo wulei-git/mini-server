@@ -1,0 +1,15 @@
+{
+  "docker": [
+    {
+      "component": "",
+      "name": ""
+    }
+  ],
+  "sqls": {
+    "postgresql": [
+      "db/dbname/ddl/1.1.0/dbname_001_dbnamedata_create_table_name.sql"
+    ]
+  }
+
+
+}

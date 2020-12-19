@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: mini-config  # 应用名称
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/wulei-git/config-center.git #配置文件所在仓库,建立Apache协议会导致404

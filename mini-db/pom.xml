@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.init.mini</groupId>
+		<artifactId>mini-server</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.init.mini.db</groupId>
+	<artifactId>mini-db</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>mini-db</name>
+	<description>DB project for Spring Boot</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <!--
+                    exclusion：
+                        1.当计算传递依赖时，从依赖构件列表里，列出被排除的依赖构件集。
+                        2.即告诉maven你只依赖指定的项目，不依赖项目的依赖。
+                        3.此元素主要用于解决版本冲突问题
+                -->
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
+        <!--
+            注意：
+                1.httpClien与feign版本之间的适配
+                2.Dalston.SR5版本
+                    a.项目<artifactId>spring-cloud-starter-feign</artifactId>
+                    b.适配 HTTP 框架中间件 <groupId>com.netflix.feign</groupId>
+                      <artifactId>feign-httpclient</artifactId>
+                3.Greenwich.SR2版本
+                    a.项目<artifactId>spring-cloud-starter-openfeign</artifactId>
+                    b.适配 HTTP 框架中间件<groupId>io.github.openfeign</groupId>
+                        <artifactId>feign-httpclient</artifactId>
+        -->
+
+        <!-- Ribbon相关 -->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-eureka</artifactId>-->
+        <!--</dependency>-->
+        <!-- SpringCloud Config客户端 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+	</dependencies>
+
+	<build>
+        <finalName>mini-db</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>*</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+		<plugins>
+			<!--<plugin>-->
+                <!--<groupId>com.spotify</groupId>-->
+                <!--<artifactId>docker-maven-plugin</artifactId>-->
+                <!--<version>1.0.0</version>-->
+                <!--<configuration>-->
+                    <!--<resources>-->
+                        <!--<resource>-->
+                            <!--<targetPath>/xxx/xxx/apps</targetPath>-->
+                            <!--<directory>${project.build.directory}</directory>-->
+                            <!--<include>${project.build.finalName}.jar</include>-->
+                        <!--</resource>-->
+                        <!--<resource>-->
+                            <!--<targetPath>/xxx/xxx/config</targetPath>-->
+                            <!--<directory>${project.build.directory}/classes</directory>-->
+                            <!--<include>application**.properties</include>-->
+                            <!--<include>logback-xml.xml</include>-->
+                        <!--</resource>-->
+                    <!--</resources>-->
+                <!--</configuration>-->
+			<!--</plugin>-->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>*.properties</exclude>
+                        <exclude>*yaml</exclude>
+                        <exclude>*.yml</exclude>
+                        <exclude>*.pk</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>false</skip>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+		</plugins>
+	</build>
+
+</project>
