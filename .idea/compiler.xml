@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mini-common" />
+        <module name="mini-config" />
+        <module name="mini-db" />
+        <module name="mini-eureka" />
+        <module name="mini-func" />
+        <module name="mini-gateway" />
+        <module name="mini-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mini-common" target="1.8" />
+      <module name="mini-config" target="1.8" />
+      <module name="mini-db" target="1.8" />
+      <module name="mini-eureka" target="1.8" />
+      <module name="mini-func" target="1.8" />
+      <module name="mini-gateway" target="1.8" />
+      <module name="mini-server" target="1.8" />
+      <module name="mini-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

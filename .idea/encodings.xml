@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mini-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mini-config" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mini-db" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mini-eureka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mini-func" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mini-gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mini-web" charset="UTF-8" />
+  </component>
+</project>
