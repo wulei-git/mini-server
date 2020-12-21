@@ -44,11 +44,11 @@
     -->
 
     <dependencies>
-        <dependency>
-            <groupId>com.init.mini.common</groupId>
-            <artifactId>mini-common</artifactId>
-            <version>${mini-common.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.init.mini.common</groupId>-->
+            <!--<artifactId>mini-common</artifactId>-->
+            <!--<version>${mini-common.version}</version>-->
+        <!--</dependency>-->
         <!--
             父 pom 使用
             1.先在spring-boot-dependencies父 pom中查找是否存在需要的依赖
