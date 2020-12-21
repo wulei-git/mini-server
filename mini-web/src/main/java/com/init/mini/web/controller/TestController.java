@@ -3,7 +3,6 @@ package com.init.mini.web.controller;
 import com.alibaba.fastjson.JSON;
 import com.init.mini.web.annotation.LogSave;
 import com.init.mini.web.service.TestService;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +20,14 @@ public class TestController {
     @Autowired
     private TestService testService;
 
-    @Value("${testScope}")
-    private String testScope;
+//    @Value("${testScope}")
+//    private String testScope;
 
     Logger logger = LoggerFactory.getLogger(TestController.class);
 
     @ResponseBody
     @GetMapping(value = "/test", produces = "application/json")
     @LogSave("testM")
-    @HystrixCommand(fallbackMethod = "testHystrixCommand")
     public String test() {
         String reslut = new String();
         try {

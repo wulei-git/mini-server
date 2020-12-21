@@ -1,8 +1,8 @@
 package com.init.mini.common.base;
 
-import java.io.Serializable;
+import com.init.mini.common.constant.ErrorCodeConstant;
 
-public class ResponseVo<T> implements Serializable {
+public class ResponseVo<T> extends VO {
 
     private String responseCode;
 
@@ -11,8 +11,8 @@ public class ResponseVo<T> implements Serializable {
     private T body;
 
     public ResponseVo() {
-        this.responseCode = "0";
-        this.responseMessage = "SUCCESS";
+        this.responseCode = ErrorCodeConstant.SUCCESS;
+        this.responseMessage = ErrorCodeConstant.SUCCESS_MSG;
     }
 
     public String getResponseCode() {

@@ -7,12 +7,23 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-
+    <!--框架版本统一控制-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <junit.version>4.12</junit.version>
+        <mini-common.version>1.0-SNAPSHOT</mini-common.version>
+        <spring-cloud-dependencies.version>Hoxton.SR7</spring-cloud-dependencies.version>
+        <spring-boot-dependencies.version>2.3.2.RELEASE</spring-boot-dependencies.version>
+        <fastjson.version>1.2.70</fastjson.version>
+        <mybatis-spring-boot-starter.version>2.1.0</mybatis-spring-boot-starter.version>
+        <mysql-connector-java.version>8.0.22</mysql-connector-java.version>
+        <druid.version>1.1.0</druid.version>
+        <aspectjweaver.version>1.8.13</aspectjweaver.version>
+        <spring-boot-starter-data-redis.version>2.3.2.RELEASE</spring-boot-starter-data-redis.version>
+        <hystrix.version>1.5.18</hystrix.version>
+        <spring-cloud-starter-config.version>2.2.4.RELEASE</spring-cloud-starter-config.version>
     </properties>
 
     <!--
@@ -23,18 +34,25 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>com.init.mini.common</groupId>
+                <artifactId>mini-common</artifactId>
+                <version>${mini-common.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR7</version>
-                <type>pom</type>
+                <version>${spring-cloud-dependencies.version}</version>
                 <scope>import</scope>
+                <type>pom</type>
             </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.3.2.RELEASE</version>
-                <type>pom</type>
+                <version>${spring-boot-dependencies.version}</version>
                 <scope>import</scope>
+                <type>pom</type>
             </dependency>
             <!--
             1.常用
@@ -52,36 +70,42 @@
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
-                <version>1.2.70</version>
+                <version>${fastjson.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>2.1.0</version>
+                <version>${mybatis-spring-boot-starter.version}</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.22</version>
+                <version>${mysql-connector-java.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
-                <version>1.1.0</version>
+                <version>${druid.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
-                <version>1.8.13</version>
+                <version>${aspectjweaver.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
-                <version>2.3.2.RELEASE</version>
+                <version>${spring-boot-starter-data-redis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-config</artifactId>
+                <version>${spring-cloud-starter-config.version}</version>
             </dependency>
 
 
@@ -97,15 +121,7 @@
             </resource>
         </resources>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <configuration>
-                    <delimiters>
-                        <delimit>$</delimit>
-                    </delimiters>
-                </configuration>
-            </plugin>
+
         </plugins>
     </build>
 

@@ -11,7 +11,7 @@
         <groupId>com.init.mini</groupId>
         <artifactId>mini-server</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <!--
         groupId标签：
@@ -32,10 +32,6 @@
     <name>mini-web</name>
     <description>Web project for Spring Boot</description>
 
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
-
     <!--
         maven构建生命周期：
             1.验证 validate	验证项目	验证项目是否正确且所有必须信息是可用的
@@ -51,7 +47,7 @@
         <dependency>
             <groupId>com.init.mini.common</groupId>
             <artifactId>mini-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${mini-common.version}</version>
         </dependency>
         <!--
             父 pom 使用
@@ -62,102 +58,168 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot-dependencies.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <!--
-                    exclusion：
-                        1.当计算传递依赖时，从依赖构件列表里，列出被排除的依赖构件集。
-                        2.即告诉maven你只依赖指定的项目，不依赖项目的依赖。
-                        3.此元素主要用于解决版本冲突问题
-                -->
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-
-        <!--
-            注意：
-                1.httpClien与feign版本之间的适配
-                2.Dalston.SR5版本
-                    a.项目<artifactId>spring-cloud-starter-feign</artifactId>
-                    b.适配 HTTP 框架中间件 <groupId>com.netflix.feign</groupId>
-                      <artifactId>feign-httpclient</artifactId>
-                3.Greenwich.SR2版本
-                    a.项目<artifactId>spring-cloud-starter-openfeign</artifactId>
-                    b.适配 HTTP 框架中间件<groupId>io.github.openfeign</groupId>
-                        <artifactId>feign-httpclient</artifactId>
-        -->
-
-        <!-- Ribbon相关 -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-ribbon</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-test</artifactId>-->
+            <!--<scope>test</scope>-->
+            <!--<exclusions>-->
+                <!--&lt;!&ndash;-->
+                    <!--exclusion：-->
+                        <!--1.当计算传递依赖时，从依赖构件列表里，列出被排除的依赖构件集。-->
+                        <!--2.即告诉maven你只依赖指定的项目，不依赖项目的依赖。-->
+                        <!--3.此元素主要用于解决版本冲突问题-->
+                <!--&ndash;&gt;-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.junit.vintage</groupId>-->
+                    <!--<artifactId>junit-vintage-engine</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis-spring-boot-starter.version}</version>
         </dependency>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
+            <version>${aspectjweaver.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>${spring-boot-starter-data-redis.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
+            <version>${spring-cloud-starter-config.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+
+        <!--
+        注意：
+            1.httpClien与feign版本之间的适配
+            2.Dalston.SR5版本
+                a.项目<artifactId>spring-cloud-starter-feign</artifactId>
+                b.适配 HTTP 框架中间件 <groupId>com.netflix.feign</groupId>
+                  <artifactId>feign-httpclient</artifactId>
+            3.Greenwich.SR2版本
+                a.项目<artifactId>spring-cloud-starter-openfeign</artifactId>
+                b.适配 HTTP 框架中间件<groupId>io.github.openfeign</groupId>
+                    <artifactId>feign-httpclient</artifactId>
+        -->
+
+        <!-- Ribbon相关 -->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-netflix-eureka-client</artifactId>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-ribbon</artifactId>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-actuator</artifactId>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
+
+
     </dependencies>
 
     <build>
         <plugins>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-resources-plugin</artifactId>-->
+                <!--<version>2.1</version>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--&lt;!&ndash;-->
+                    <!--spring-boot-maven-plugin插件：-->
+                        <!--1.当运行“mvn package”进行打包时，会打包成一个可以直接运行的 JAR 文件-->
+                        <!--2.使用“java -jar”命令就可以直接运行。-->
+                        <!--3.不推荐用war，因为springboot适合前后端分离，打成jar进行部署更合适。-->
+                <!--&ndash;&gt;-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+                <!--<version>2.0.1.RELEASE</version>-->
+            <!--</plugin>-->
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <!--
-                    spring-boot-maven-plugin插件：
-                        1.当运行“mvn package”进行打包时，会打包成一个可以直接运行的 JAR 文件
-                        2.使用“java -jar”命令就可以直接运行。
-                        3.不推荐用war，因为springboot适合前后端分离，打成jar进行部署更合适。
-                -->
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.7</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.22</version>
+
+                    </dependency>
+
+                    <!--<dependency>-->
+                        <!--<groupId>org.mybatis</groupId>-->
+                        <!--<artifactId>mybatis</artifactId>-->
+                        <!--<version>3.5.2</version>-->
+                    <!--</dependency>-->
+                    <dependency>
+                        <groupId>org.mybatis.generator</groupId>
+                        <artifactId>mybatis-generator-core</artifactId>
+                        <version>1.3.7</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>Generate MyBatis Artifacts</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!--允许移动生成的文件 -->
+                    <verbose>true</verbose>
+                    <!-- 是否覆盖:一定是 false 避免覆盖他人代码 -->
+                    <overwrite>false</overwrite>
+                    <!-- 自动生成的配置 -->
+                    <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
+                </configuration>
             </plugin>
         </plugins>
         <resources>

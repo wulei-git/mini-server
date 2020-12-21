@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 public class BaseController {
 
     protected void initRespHeader(HttpServletResponse httpServletResponse) {
-        httpServletResponse.setHeader("tracid", MDC.get("X-B3-TRACEID"));
+        httpServletResponse.setHeader("traceid", MDC.get("X-B3-TRACEID"));
     }
 
     protected HttpServletRequest getRequest() {

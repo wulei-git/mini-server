@@ -2,6 +2,7 @@ package com.init.mini.common.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -17,15 +18,9 @@ public class RedisUtil {
 
     @PostConstruct
     public void init() {
-//        redisTemplate.setKeySerializer(RedisSerializer.string());
-//        redisTemplate.setHashKeySerializer(RedisSerializer.string());
-//        redisTemplate.setValueSerializer(RedisSerializer.json());
-
-        redisTemplate.opsForValue().set("no1", "wul");
-        redisTemplate.opsForValue().set("no2", "wul2");
-        System.out.println(redisTemplate.opsForValue().get("no1"));
-        System.out.println(redisTemplate.opsForValue().get("no2"));
-
+        redisTemplate.setKeySerializer(RedisSerializer.string());
+        redisTemplate.setHashKeySerializer(RedisSerializer.string());
+        redisTemplate.setValueSerializer(RedisSerializer.json());
     }
 
     public Object getObject(String key) throws Exception {
