@@ -4,6 +4,7 @@ import com.init.mini.web.mapper.UserMapper;
 import com.init.mini.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 
@@ -22,6 +23,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
     @Autowired
     private ThreadDemo threadDemo;
+    @Transactional
     @Override
     public String queryTest() {
         System.out.println(Thread.currentThread().getName());

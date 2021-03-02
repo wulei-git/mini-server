@@ -44,11 +44,11 @@
     -->
 
     <dependencies>
-        <!--<dependency>-->
-            <!--<groupId>com.init.mini.common</groupId>-->
-            <!--<artifactId>mini-common</artifactId>-->
-            <!--<version>${mini-common.version}</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.init.mini.common</groupId>
+            <artifactId>mini-common</artifactId>
+            <version>${mini-common.version}</version>
+        </dependency>
         <!--
             父 pom 使用
             1.先在spring-boot-dependencies父 pom中查找是否存在需要的依赖
@@ -159,6 +159,24 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+            <version>4.8.0</version>
+        </dependency>
+
+        <!--swagger-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
 
     </dependencies>
 
@@ -223,6 +241,7 @@
             </plugin>
         </plugins>
         <resources>
+            <!--注意会导致难以发现的问题，关于 xml 文件的扫描-->
             <!--此处的配置是识别到mapper.xml文件，也可以在application.properties中配置-->
             <resource>
                 <directory>src/main/java</directory>

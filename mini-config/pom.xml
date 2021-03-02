@@ -6,7 +6,7 @@
         <groupId>com.init.mini</groupId>
         <artifactId>mini-server</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.init.mini.config</groupId>
     <artifactId>mini-config</artifactId>

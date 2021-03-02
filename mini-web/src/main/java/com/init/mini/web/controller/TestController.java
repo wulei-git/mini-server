@@ -3,6 +3,7 @@ package com.init.mini.web.controller;
 import com.alibaba.fastjson.JSON;
 import com.init.mini.web.annotation.LogSave;
 import com.init.mini.web.service.TestService;
+import com.init.mini.web.service.impl.TestServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

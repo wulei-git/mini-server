@@ -44,6 +44,7 @@ public class LogSaveAOP {
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
         HttpServletRequest httpServletRequest = servletRequestAttributes.getRequest();
         String headTest = httpServletRequest.getHeader("head-test");
+        httpServletRequest.getRequestURI();
         System.out.println("记录："+ logSave.value());
         Object proceed = null;
         try {

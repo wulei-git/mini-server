@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.init.mini.db.mapper.RefreshTableMapper">
+  <select id="selectList" parameterType="string" resultType="com.init.mini.common.entity.RefreshTable">
+      select
+        name as name,
+        status as status,
+        service_name as serviceName
+      from
+          refresh_table
+      where
+              status = #{status}
+  </select>
+</mapper>

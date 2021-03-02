@@ -24,6 +24,7 @@
         <spring-boot-starter-data-redis.version>2.3.2.RELEASE</spring-boot-starter-data-redis.version>
         <hystrix.version>1.5.18</hystrix.version>
         <spring-cloud-starter-config.version>2.2.4.RELEASE</spring-cloud-starter-config.version>
+        <rocketmq.version>4.7.0</rocketmq.version>
     </properties>
 
     <!--
@@ -107,6 +108,21 @@
                 <artifactId>spring-cloud-starter-config</artifactId>
                 <version>${spring-cloud-starter-config.version}</version>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-client -->
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-client</artifactId>
+                <version>4.8.0</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-spring-boot-starter -->
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>2.2.0</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

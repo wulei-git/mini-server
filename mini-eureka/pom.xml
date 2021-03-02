@@ -6,7 +6,7 @@
         <groupId>com.init.mini</groupId>
         <artifactId>mini-server</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.init.mini</groupId>
     <artifactId>mini-eureka</artifactId>
@@ -19,10 +19,10 @@
 
     <dependencies>
         <!--eureka-server服务端 Eureka 2.0闭源之后，Consul慢慢会成为主流。-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka-server</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-eureka-server</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>

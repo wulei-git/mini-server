@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<script>
+    $(document).ready(function(){
+        $("button").click(function(){
+            $.get("/testJqueryAjax",function(data,status){
+                // alert("数据: " + data + "\n状态: " + status);
+                $("html").html(data);
+            });
+        });
+    });
+</script>
+<body>
+
+<div id="div1"><h2>使用 jQuery AJAX 修改文本内容</h2></div>
+<button>获取外部内容</button>
+
+<video width="420" controls>
+    <source src="mov_bbb.mp4" type="video/mp4">
+    <source src="mov_bbb.ogg" type="video/ogg">
+    Your browser does not support the video tag.
+</video>
+<button>测试 JQueryAjax</button>
+</body>
+</html>
