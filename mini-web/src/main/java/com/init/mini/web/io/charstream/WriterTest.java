@@ -22,5 +22,8 @@ public class WriterTest {
         // 一般在关闭输出流之前，要先调用flush()方法强制缓冲区中的内容输出，并清空缓冲区。
         writer.flush();
         writer.close();
+        if(false) {
+
+        }
     }
 }

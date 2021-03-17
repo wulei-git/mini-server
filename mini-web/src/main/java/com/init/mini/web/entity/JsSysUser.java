@@ -1,5 +1,7 @@
 package com.init.mini.web.entity;
 
+import com.init.mini.web.annotationtest.dao.Column;
+import com.init.mini.web.annotationtest.dao.Table;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -7,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @ApiModel(value = "管理员 model")
+@Table("js_sys_user")
 public class JsSysUser {
     /**
      *
@@ -16,6 +19,7 @@ public class JsSysUser {
      * @mbg.generated
      */
     @ApiModelProperty(value = "用户userCode", required = true, example = "#001")
+    @Column("user_code")
     private String userCode;
 
     /**
@@ -34,6 +38,8 @@ public class JsSysUser {
      *
      * @mbg.generated
      */
+    @Column("user_name")
+
     private String userName;
 
     /**
@@ -43,6 +49,7 @@ public class JsSysUser {
      *
      * @mbg.generated
      */
+    @Column("password")
     private String password;
 
     /**
@@ -52,6 +59,8 @@ public class JsSysUser {
      *
      * @mbg.generated
      */
+    @Column("email")
+
     private String email;
 
     /**
