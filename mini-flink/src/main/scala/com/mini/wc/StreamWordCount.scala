@@ -14,19 +14,26 @@ object StreamWordCount {
     // key 乱序因为数据在各种算子任务中传递分区造成，将全局并行度设置为 1 可以处理，但这样失去高并发特性
 //    env.setParallelism(8)
 
+    // 全局禁止合并任务链
+//    env.disableOperatorChaining()
+
     // 使用执行参数封装数据源 IP 端口
-    val parameterTool: ParameterTool = ParameterTool.fromArgs(args)
-    val host: String = parameterTool.get("host")
-    val port: Int = parameterTool.getInt("port")
+//    val parameterTool: ParameterTool = ParameterTool.fromArgs(args)
+//    val host: String = parameterTool.get("host")
+//    val port: Int = parameterTool.getInt("port")
 
     // nc -lk 7777 启动 7777 端口输入 enter 向 7777 端口发生数据
-    val inputDataStream: DataStream[String] = env.socketTextStream(host, port)
+    // socket 流的并行度只能为 1
+    val inputDataStream: DataStream[String] = env.socketTextStream("localhost", 7777)
 
-    // 可以为每一个算子设置独立的并行度, 用的少，
+    // 可以为每一个算子设置独立的并行度, 用的少
+    // disableChaining 禁止该算子任务进行合并（任务特殊，消耗资源），会增加任务数
+    // startNewChain 开启新的任务链
+    // slotSharingGroup 共享组,让某些计算量大的算子独享CPU
     val resultDataStream: DataStream[(String, Int)] = inputDataStream
-      .flatMap(_.split(" "))
-      .filter(_.nonEmpty)
-      .map((_, 1))
+      .flatMap(_.split(" ")).slotSharingGroup("A")
+      .filter(_.nonEmpty).disableChaining()
+      .map((_, 1)).startNewChain()
       .keyBy(0)
       .sum(1)
 
