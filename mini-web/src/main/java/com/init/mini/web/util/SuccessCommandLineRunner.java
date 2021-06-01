@@ -9,6 +9,6 @@ import org.springframework.stereotype.Component;
 public class SuccessCommandLineRunner implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
-        System.out.println(1);
+        System.out.println(Runtime.getRuntime().maxMemory());
     }
 }
