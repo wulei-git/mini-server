@@ -21,7 +21,6 @@ object Main {
 
     val funcTest = (x : Int) => x + 3;
 
-    val env = StreamExec
 
   }
 

@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 @RefreshScope
@@ -29,7 +32,12 @@ public class TestController {
     @ResponseBody
     @GetMapping(value = "/test", produces = "application/json")
     @LogSave("testM")
-    public String test() {
+    public String test(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        request.getServletContext();
+
+        session.setAttribute("user", new String(""));
+
         String reslut = new String();
         try {
             reslut = testService.test();
